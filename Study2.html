@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>FizzBuzz問題</h1>
+    <div>
+      <p>FizzNum:</p>
+      <input type="text" id="fizz-num" />
+    </div>
+    <div>
+      <p>BuzzNum:</p>
+      <input type="text" id="buzz-num" />
+    </div>
+    <div>
+      <input type="submit" value="実行" id="submit-btn" />
+    </div>
+    <div class="result"></div>
+    <script>
+      let fizzNum = 0;
+      let buzzNum = 0;
+
+      document.getElementById("submit-btn").onclick = function () {
+        fizzNum = document.getElementById("fizz-num").value;
+        buzzNum = document.getElementById("buzz-num").value;
+        fizzNum = parseInt(fizzNum, 10);
+        buzzNum = parseInt(buzzNum, 10);
+
+        let totalFizz = 0;
+        let totalBuzz = 0;
+        for (let i = 1; totalFizz < 20; i++) {
+          totalFizz = fizzNum * i;
+          totalBuzz = buzzNum * i;
+          if (totalFizz % buzzNum == 0) {
+            let FizzBuzz = totalFizz;
+            let resultFizzBuzz = document.createElement("p");
+            resultFizzBuzz.textContent = "FizzBuzz:" + FizzBuzz;
+            document.querySelector(".result").appendChild(resultFizzBuzz);
+          } else {
+            let resultFizz = document.createElement("p");
+            resultFizz.textContent = "Fizz:" + totalFizz;
+            document.querySelector(".result").appendChild(resultFizz);
+
+            let resultBuzz = document.createElement("p");
+            resultBuzz.textContent = "Buzz:" + totalBuzz;
+            document.querySelector(".result").appendChild(resultBuzz);
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
