@@ -28,26 +28,31 @@
         buzzNum = document.getElementById("buzz-num").value;
         fizzNum = parseInt(fizzNum, 10);
         buzzNum = parseInt(buzzNum, 10);
+        let result = document.querySelector(".result");
+        result.innerHTML = "";
 
-        if (!(fizzNum && buzzNum)) {
+        if (!fizzNum || !buzzNum) {
           let errorMsg = document.createElement("p");
           errorMsg.textContent = "数字を入力してください。";
-          document.querySelector(".result").appendChild(errorMsg);
-        }
-        let fizzBuzz = 0;
-        for (let i = 1; i < 100; i++) {
-          if (i % fizzNum === 0 && i % buzzNum === 0) {
-            let resultFizzBuzz = document.createElement("p");
-            resultFizzBuzz.innerHTML = "FizzBuzz:" + i;
-            document.querySelector(".result").appendChild(resultFizzBuzz);
-          } else if (i % fizzNum === 0) {
-            let resultFizz = document.createElement("p");
-            resultFizz.innerHTML = "Fizz:" + i;
-            document.querySelector(".result").appendChild(resultFizz);
-          } else if (i % buzzNum === 0) {
-            let resultBuzz = document.createElement("p");
-            resultBuzz.innerHTML = "Buzz:" + i;
-            document.querySelector(".result").appendChild(resultBuzz);
+          result.appendChild(errorMsg);
+        } else {
+          for (let i = 1; i < 100; i++) {
+            if (i % fizzNum === 0 && i % buzzNum === 0) {
+              let resultFizzBuzz = document.createElement("p");
+              resultFizzBuzz.className = "fizz-buzz";
+              resultFizzBuzz.innerHTML = "FizzBuzz:" + i;
+              result.appendChild(resultFizzBuzz);
+            } else if (i % fizzNum === 0) {
+              let resultFizz = document.createElement("p");
+              resultFizz.className = "fizz";
+              resultFizz.innerHTML = "Fizz:" + i;
+              result.appendChild(resultFizz);
+            } else if (i % buzzNum === 0) {
+              let resultBuzz = document.createElement("p");
+              resultBuzz.className = "buzz";
+              resultBuzz.innerHTML = "Buzz:" + i;
+              result.appendChild(resultBuzz);
+            }
           }
         }
       };
