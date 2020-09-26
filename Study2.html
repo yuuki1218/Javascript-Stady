@@ -29,23 +29,19 @@
         fizzNum = parseInt(fizzNum, 10);
         buzzNum = parseInt(buzzNum, 10);
 
-        let totalFizz = 0;
-        let totalBuzz = 0;
-        for (let i = 1; totalFizz < 20; i++) {
-          totalFizz = fizzNum * i;
-          totalBuzz = buzzNum * i;
-          if (totalFizz % buzzNum == 0) {
-            let FizzBuzz = totalFizz;
+        let fizzBuzz = 0;
+        for (let i = 1; i < 100; i++) {
+          if (i % fizzNum === 0 && i % buzzNum === 0) {
             let resultFizzBuzz = document.createElement("p");
-            resultFizzBuzz.textContent = "FizzBuzz:" + FizzBuzz;
+            resultFizzBuzz.textContent = "FizzBuzz:" + i;
             document.querySelector(".result").appendChild(resultFizzBuzz);
-          } else {
+          } else if (i % fizzNum === 0) {
             let resultFizz = document.createElement("p");
-            resultFizz.textContent = "Fizz:" + totalFizz;
+            resultFizz.textContent = "Fizz:" + i;
             document.querySelector(".result").appendChild(resultFizz);
-
+          } else if (i % buzzNum === 0) {
             let resultBuzz = document.createElement("p");
-            resultBuzz.textContent = "Buzz:" + totalBuzz;
+            resultBuzz.textContent = "Buzz:" + i;
             document.querySelector(".result").appendChild(resultBuzz);
           }
         }
