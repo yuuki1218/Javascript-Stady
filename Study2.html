@@ -26,12 +26,20 @@
       document.getElementById("submit-btn").onclick = function () {
         fizzNum = document.getElementById("fizz-num").value;
         buzzNum = document.getElementById("buzz-num").value;
-        fizzNum = parseInt(fizzNum, 10);
-        buzzNum = parseInt(buzzNum, 10);
+        // fizzNum = parseInt(fizzNum, 10);
+        // buzzNum = parseInt(buzzNum, 10);
         let result = document.querySelector(".result");
         result.innerHTML = "";
 
-        if (!fizzNum || !buzzNum) {
+        let floFlg = new RegExp("[\.]+");
+        console.log(floFlg.test(fizzNum));
+        console.log(floFlg.test(buzzNum));
+        if (
+          !fizzNum ||
+          !buzzNum ||
+          floFlg.test(fizzNum) ||
+          floFlg.test(buzzNum)
+        ) {
           let errorMsg = document.createElement("p");
           errorMsg.textContent = "数字を入力してください。";
           result.appendChild(errorMsg);
