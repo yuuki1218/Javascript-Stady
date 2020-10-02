@@ -3,31 +3,26 @@ const todos = [];
 
 const btn = document.getElementById("task-btn");
 const tbody = document.querySelector("tbody");
-let idNum = 0;
 
 //クリックされたら行を追加
 const taskCreate = function () {
   //comment
-  let title = document.getElementById("title").value;
-  if (!title) {
-    alert("入力してください。");
-    return;
-  }
+  let commentValue = document.getElementById("title").value;
+  // if (!commentValue) {
+  //   alert("入力してください。");
+  //   return;
+  // }
 
   //status-btn
-  const statusBtn = document.createElement("input");
-  statusBtn.type = "button";
-  statusBtn.value = "作業中";
+  const statusBtn = "作業中";
 
   //delete-btn
-  const deleteBtn = document.createElement("input");
-  deleteBtn.type = "button";
-  deleteBtn.value = "削除";
+  const deleteBtn = "削除";
 
   //todoの格納
 
   const todo = {
-    comment: title,
+    comment: commentValue,
     status: statusBtn,
     delete: deleteBtn,
   };
@@ -49,8 +44,8 @@ const taskCreate = function () {
 
   itemId.textContent = todo.id;
   itemComment.textContent = todo.comment;
-  itemStatus.appendChild(todo.status);
-  itemDelete.appendChild(todo.delete);
+  itemStatus.textContent = todo.status;
+  itemDelete.textContent = todo.delete;
 
   tasks.appendChild(itemId);
   tasks.appendChild(itemComment);
@@ -58,10 +53,10 @@ const taskCreate = function () {
   tasks.appendChild(itemDelete);
 
   resetTask();
-  deleteBtn.addEventListener("click", () => removeTask(deleteBtn));
 };
 
 //form内のリセット
 let resetTask = () => (document.getElementById("title").value = "");
 
+//タスクを作るイベント
 btn.addEventListener("click", taskCreate);
