@@ -7,11 +7,11 @@ const tbody = document.querySelector("tbody");
 //クリックされたら行を追加
 const taskCreate = function () {
   //comment
-  let commentValue = document.getElementById("title").value;
-  // if (!commentValue) {
-  //   alert("入力してください。");
-  //   return;
-  // }
+  const commentValue = document.getElementById("title").value;
+  if (!commentValue) {
+    alert("入力してください。");
+    return;
+  }
 
   //status-btn
   const statusBtn = "作業中";
@@ -56,7 +56,7 @@ const taskCreate = function () {
 };
 
 //form内のリセット
-let resetTask = () => (document.getElementById("title").value = "");
+const resetTask = () => (document.getElementById("title").value = "");
 
 //タスクを作るイベント
 btn.addEventListener("click", taskCreate);
