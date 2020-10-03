@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>ToDo リスト</h1>
+
+    <div class="radio-btn">
+      <label for="all">すべて</label>
+      <input type="radio" value="すべて" id="all" />
+      <label for="now">作業中</label>
+      <input type="radio" value="作業中" id="now" />
+      <label for="finish">完了</label>
+      <input type="radio" value="完了" id="finish" />
+    </div>
+    <table id="table" style="border: solid 1px">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>コメント</th>
+          <th>状態</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="task-form">
+      <h2>新規タスクの追加</h2>
+      <input type="text" id="title" />
+      <button id="task-btn">追加</button>
+    </div>
+
+    <script src="Study3.js"></script>
+  </body>
+</html>
