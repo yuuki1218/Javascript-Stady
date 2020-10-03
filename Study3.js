@@ -13,50 +13,58 @@ const taskCreate = function () {
     return;
   }
 
-  //status-btn
-  const statusBtn = "作業中";
-
-  //delete-btn
-  const deleteBtn = "削除";
-
   //todoの格納
-
   const todo = {
     comment: commentValue,
-    status: statusBtn,
-    delete: deleteBtn,
   };
-
-  todo.id = todos.length;
   todos.push(todo);
-  // console.log(todos);
 
   //todoを一つずつ作る。
-  const tasks = document.createElement("tr");
-  tbody.appendChild(tasks);
+  const task = document.createElement("tr");
+  tbody.appendChild(task);
 
   const itemId = document.createElement("td");
   itemId.className = "id";
-  itemId.value = todo.id;
+  itemId.value = todos.length - 1;
+  itemId.textContent = itemId.value;
+  task.appendChild(itemId);
+
   const itemComment = document.createElement("td");
-  const itemStatus = document.createElement("td");
-  const itemDelete = document.createElement("td");
-
-  itemId.textContent = todo.id;
   itemComment.textContent = todo.comment;
-  itemStatus.textContent = todo.status;
-  itemDelete.textContent = todo.delete;
+  task.appendChild(itemComment);
 
-  tasks.appendChild(itemId);
-  tasks.appendChild(itemComment);
-  tasks.appendChild(itemStatus);
-  tasks.appendChild(itemDelete);
+  const statusBtn = document.createElement("td");
+  statusBtn.textContent = "作業中";
+  task.appendChild(statusBtn);
+
+  const deleteBtn = document.createElement("td");
+  deleteBtn.textContent = "削除";
+  task.appendChild(deleteBtn);
 
   resetTask();
+  statusBtn.addEventListener("click", () => changeStatus(statusBtn));
+  deleteBtn.addEventListener("click", () => removeTask(deleteBtn));
 };
 
 //form内のリセット
-const resetTask = () => (document.getElementById("title").value = "");
+let resetTask = () => (document.getElementById("title").value = "");
 
-//タスクを作るイベント
+//削除ボタンが押されたら対象のタスクを消す。
+let removeTask = (deleteBtn) => {
+  const targetTask = deleteBtn.closest("tr");
+  const targetId = targetTask.querySelector(".id").value;
+  todos.splice(targetId, 1);
+  tbody.removeChild(targetTask);
+  updateId();
+};
+
+//数字を振り直すメソッド
+function updateId() {
+  const allId = tbody.getElementsByClassName("id");
+  for (let i = 0; i < allId.length; i++) {
+    const idNum = allId[i];
+    idNum.textContent = i;
+  }
+}
+
 btn.addEventListener("click", taskCreate);
