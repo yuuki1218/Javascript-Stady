@@ -8,10 +8,10 @@ const tbody = document.querySelector("tbody");
 const taskCreate = function () {
   //comment
   const commentValue = document.getElementById("title").value;
-  if (!commentValue) {
-    alert("入力してください。");
-    return;
-  }
+  // if (!commentValue) {
+  //   alert("入力してください。");
+  //   return;
+  // }
 
   //todoの格納
   const todo = {
@@ -25,8 +25,7 @@ const taskCreate = function () {
 
   const itemId = document.createElement("td");
   itemId.className = "id";
-  itemId.value = todos.length - 1;
-  itemId.textContent = itemId.value;
+  itemId.textContent = todos.length - 1;
   task.appendChild(itemId);
 
   const itemComment = document.createElement("td");
@@ -52,7 +51,7 @@ let resetTask = () => (document.getElementById("title").value = "");
 //削除ボタンが押されたら対象のタスクを消す。
 let removeTask = (deleteBtn) => {
   const targetTask = deleteBtn.closest("tr");
-  const targetId = targetTask.querySelector(".id").value;
+  const targetId = targetTask.querySelector(".id").textContent;
   todos.splice(targetId, 1);
   tbody.removeChild(targetTask);
   updateId();
