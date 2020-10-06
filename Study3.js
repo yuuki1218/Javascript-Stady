@@ -57,12 +57,15 @@ let removeTask = (deleteBtn) => {
   updateId();
 };
 
-//数字を振り直すメソッド
-function updateId() {
-  const allId = tbody.getElementsByClassName("id");
-  for (let i = 0; i < allId.length; i++) {
-    const idNum = allId[i];
-    idNum.textContent = i;
+//状態を切り替えるメソッド
+function changeStatus(statusBtn) {
+  console.log(statusBtn.textContent);
+  if (statusBtn.textContent == "作業中") {
+    statusBtn.textContent = "完了";
+    return;
+  } else if (statusBtn.textContent == "完了") {
+    statusBtn.textContent = "作業中";
+    return;
   }
 }
 
