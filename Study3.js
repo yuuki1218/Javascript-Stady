@@ -8,10 +8,10 @@ const tbody = document.querySelector("tbody");
 const taskCreate = function () {
   //comment
   const commentValue = document.getElementById("title").value;
-  // if (!commentValue) {
-  //   alert("入力してください。");
-  //   return;
-  // }
+  if (!commentValue) {
+    alert("入力してください。");
+    return;
+  }
 
   //todoの格納
   const todo = {
