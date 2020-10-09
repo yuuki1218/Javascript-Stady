@@ -46,7 +46,7 @@ const taskCreate = function () {
 };
 
 //form内のリセット
-let resetTask = () => (document.getElementById('title').value = '');
+const resetTask = () => (document.getElementById('title').value = '');
 
 //削除ボタンが押されたら対象のタスクを消す。
 let removeTask = (deleteBtn) => {
