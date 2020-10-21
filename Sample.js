@@ -1,5 +1,6 @@
 //必要なエレメントを取得
 const todos = [];
+console.log("hello");
 
 const btn = document.getElementById("task-btn");
 const tbody = document.querySelector("tbody");
